@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Dream Craft | Architecture & Interior Design </title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700;900&amp;family=Noto+Sans:wght@300;400;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#d4af37",
+                        "background-light": "#f8f8f6",
+                        "background-dark": "#121212",
+                    },
+                    fontFamily: {
+                        "display": ["Noto Serif", "serif"],
+                        "sans": ["Noto Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Noto Sans', sans-serif;
+        }
+
+        h1,
+        h2,
+        h3,
+        .font-display {
+            font-family: 'Noto Serif', serif;
+        }
+
+        .glass-nav {
+            background: rgba(18, 18, 18, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .split-panel {
+            transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .gold-border {
+            border: 1px solid #d4af37;
+        }
+
+        .text-shadow-lg {
+            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-white overflow-x-hidden">
+    <header class="fixed top-0 left-0 right-0 z-50 glass-nav px-6 lg:px-20 h-20 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+            <div class="text-primary">
+                <span class="material-symbols-outlined text-4xl">architecture</span>
+            </div>
+            <h2 class="text-white text-xl font-black tracking-widest uppercase font-display">Dream Craft</h2>
+        </div>
+        <nav class="hidden md:flex items-center gap-10">
+            <a class="text-white/80 hover:text-primary transition-colors text-sm font-medium uppercase tracking-widest"
+                href="#">Home</a>
+            <a class="text-white/80 hover:text-primary transition-colors text-sm font-medium uppercase tracking-widest"
+                href="#">Services</a>
+            <a class="text-white/80 hover:text-primary transition-colors text-sm font-medium uppercase tracking-widest"
+                href="#">Portfolio</a>
+            <a class="text-white/80 hover:text-primary transition-colors text-sm font-medium uppercase tracking-widest"
+                href="#">Method</a>
+        </nav>
+        <div class="flex items-center gap-6">
+            <button
+                class="hidden sm:flex items-center justify-center rounded-lg gold-border px-6 py-2 text-primary hover:bg-primary hover:text-background-dark transition-all duration-300 text-sm font-bold uppercase tracking-widest">
+                Contact
+            </button>
+        </div>
+    </header>
+    <main class="relative h-screen w-full flex flex-col md:flex-row overflow-hidden">
+        <section
+            class="group relative flex-1 h-1/2 md:h-full overflow-hidden split-panel border-b md:border-b-0 md:border-r border-primary/20">
+            <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                data-alt="Luxury modern interior with bespoke furniture and marble details"
+                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBaXYLNwLWuwG86nshVouPCnWTQes8iteAs54g2vrDLkFqfE5bCRWDD0a4xTDjRtm0VuiGSuhXqExU3gfg4ZqQxnsPFLaZnOrke6F04APLjVvsboW8VNPd8XN2GkN5vrkK22xqFT-YJ58t1X31crm4TigHhr3SQ0Qc1yX6uTld9PzuB3PNLR3Zw4ohkt9ojsvGrXSlOi0Nwes3ICwObJrK3SRvx15XRyDotAWZ5j80-on89fDHTBL6lpYwqoy6YFBwjxymseD8rJmWF');">
+            </div>
+            <div class="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition-colors duration-500"></div>
+            <div class="relative h-full flex flex-col justify-center items-center px-10 text-center z-10">
+                <span
+                    class="text-primary text-sm font-bold tracking-[0.3em] uppercase mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">Interiors</span>
+                <h1
+                    class="text-white text-6xl md:text-8xl font-black mb-6 tracking-tighter text-shadow-lg font-display">
+                    Curation</h1>
+                <p class="text-white/90 text-lg md:text-xl max-w-md font-light mb-8 leading-relaxed italic">
+                    Exquisite Spaces Designed for the Distinguished.
+                </p>
+                <button
+                    class="bg-primary text-background-dark font-bold py-4 px-10 rounded uppercase tracking-widest text-sm hover:scale-105 transition-transform">
+                    Explore Design
+                </button>
+            </div>
+            <div
+                class="absolute bottom-10 left-1/2 -translate-x-1/2 md:left-10 md:translate-x-0 flex items-center gap-4 text-primary/40 group-hover:text-primary transition-colors">
+                <span class="w-12 h-[1px] bg-current"></span>
+                <span class="text-[10px] uppercase tracking-widest font-bold">The Art of Space</span>
+            </div>
+        </section>
+        <section class="group relative flex-1 h-1/2 md:h-full overflow-hidden split-panel">
+            <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                data-alt="Modern architectural structure with clean lines and premium materials"
+                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAJdCpVTBz2g9eErfWGS4Qw9_nmuhXH07HTU992mSEl_hldTClMScsh5-83eS2EnM5nCQI-Mj8dSlY3dVXn6HO5hemA8IASwO17e-w0oUlj4tAX1A-Hri-GN66WfHafNS8PMqbnxr3Zp13sv-eRUn9hAGmW5BYBkMSD-P51rYE61-LoU_vZvX7NFy3D-hy765gCstojUDOcRI3G_02uH7zYly9mvob_D3n6_i4mkInBXLEb0ABiNv54CqJXoay1-6-i6e3Q6lKpn_IE');">
+            </div>
+            <div class="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition-colors duration-500"></div>
+            <div class="relative h-full flex flex-col justify-center items-center px-10 text-center z-10">
+                <span
+                    class="text-primary text-sm font-bold tracking-[0.3em] uppercase mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">Architecture</span>
+                <h1
+                    class="text-white text-6xl md:text-8xl font-black mb-6 tracking-tighter text-shadow-lg font-display">
+                    Creation</h1>
+                <p class="text-white/90 text-lg md:text-xl max-w-md font-light mb-8 leading-relaxed italic">
+                    Technical Mastery & Bespoke Infrastructure.
+                </p>
+                <button
+                    class="bg-white text-background-dark font-bold py-4 px-10 rounded uppercase tracking-widest text-sm hover:scale-105 transition-transform group-hover:bg-primary">
+                    View Construction
+                </button>
+            </div>
+            <div
+                class="absolute bottom-10 left-1/2 -translate-x-1/2 md:right-10 md:left-auto md:translate-x-0 flex items-center gap-4 text-primary/40 group-hover:text-primary transition-colors">
+                <span class="text-[10px] uppercase tracking-widest font-bold">The Art of Structure</span>
+                <span class="w-12 h-[1px] bg-current"></span>
+            </div>
+        </section>
+    </main>
+    <section class="bg-background-dark py-24 px-6 lg:px-40 relative overflow-hidden text-center">
+        <div class="max-w-[1200px] mx-auto mb-20">
+            <h2 class="text-primary text-sm font-bold tracking-[0.4em] uppercase mb-6">Synergy of Design</h2>
+            <h3 class="text-white text-4xl md:text-6xl font-bold leading-tight mb-8 font-display">
+                Artistry Meets Infrastructure
+            </h3>
+            <p class="text-white/60 text-lg md:text-xl max-w-2xl mx-auto font-light leading-relaxed">
+                We provide a comprehensive approach to luxury architecture. Whether designing an intimate interior or
+                managing a large-scale construction, our standard remains unparalleled.
+            </p>
+        </div>
+    </section>
+    <footer class="bg-[#0a0a0a] border-t border-white/5 pt-20 pb-10 px-6 lg:px-20 text-center">
+        <p class="text-white/30 text-[10px] uppercase tracking-[0.2em]">© 2026 Dream Craft Agency. All Rights Reserved.
+        </p>
+    </footer>
+</body>
+
+</html>
