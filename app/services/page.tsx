@@ -7,10 +7,15 @@ import Footer from "@/components/Footer";
 import { Hammer, Ruler, PenTool, Layout, Box, Lightbulb, Compass, Milestone, HardHat, Droplets, Grid } from "lucide-react";
 
 const fadeIn = {
-    initial: { opacity: 0, y: 20 },
+    initial: { opacity: 0, y: 40 },
     whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true },
-    transition: { duration: 0.6, ease: "easeOut" }
+    viewport: { once: true, margin: "-100px" },
+    transition: { duration: 1, ease: [0.22, 1, 0.36, 1] }
+};
+
+const staggerContainer = {
+    initial: {},
+    whileInView: { transition: { staggerChildren: 0.1 } }
 };
 
 export default function Services() {
@@ -62,24 +67,27 @@ export default function Services() {
                 <div className="absolute inset-0">
                     <div className="absolute inset-0 bg-black/70 z-10"></div>
                     <Image
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVdC4duuYnMMHTei06kXri-JzLsKPopG2t9Yj3YsUbw9s6SsoZz24oZSBzmqwyRD0sqLu5B_aoUE4K-3FkRuZErV5RhX68y1HghJSQOov0FZ2VY9feqn6-ZR3GL65ElRBiONZAXonfp4tIfgkOeMTFS4aG2dFEkn9XumgD8sv24ZRcsGlyX2BUMLuDCC8q-Hasz10exZP-wXanvML6cJ0RQCJgYmtfwE80ceAB5_HIFKjRy7W8Zfe1B3mbUbUwCPRVxi033Cf183ib"
+                        src="https://images.unsplash.com/photo-1541888946425-d81bb19480c5?auto=format&fit=crop&q=80&w=1600"
                         alt="Construction Services"
                         fill
                         className="object-cover"
+                        unoptimized
+                        sizes="100vw"
                     />
                 </div>
                 <div className="relative z-20 text-center px-6">
                     <motion.span
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.5 }}
                         className="text-primary italic text-2xl mb-4 block tracking-wide uppercase font-light"
                     >
                         Excellence in Execution
                     </motion.span>
                     <motion.h1
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.2 }}
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 1.2, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
                         className="text-5xl md:text-8xl font-black text-white uppercase tracking-tighter"
                     >
                         Our <span className="text-primary italic font-light">Services</span>
@@ -90,12 +98,17 @@ export default function Services() {
             {/* Services Grid */}
             <section className="py-32 px-6 md:px-20">
                 <div className="max-w-7xl mx-auto">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+                    <motion.div
+                        variants={staggerContainer}
+                        initial="initial"
+                        whileInView="whileInView"
+                        viewport={{ once: true, margin: "-100px" }}
+                        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12"
+                    >
                         {services.map((service, idx) => (
                             <motion.div
                                 key={idx}
-                                {...fadeIn}
-                                transition={{ delay: idx * 0.1 }}
+                                variants={fadeIn}
                                 className="group p-12 border border-white/5 bg-white/5 rounded-3xl hover:border-primary transition-all duration-500 flex flex-col items-start"
                             >
                                 <div className="text-primary mb-10 group-hover:scale-110 transition-transform duration-500">
@@ -115,7 +128,7 @@ export default function Services() {
                                 </ul>
                             </motion.div>
                         ))}
-                    </div>
+                    </motion.div>
                 </div>
             </section>
 
@@ -130,18 +143,24 @@ export default function Services() {
                         <p className="text-slate-400 text-xl leading-relaxed mb-12 font-light italic">
                             We source the world&apos;s finest materials and pair them with hereditary local craftsmanship. From Italian Carrara marble to technical architectural concrete, we ensure every texture tells a story of luxury.
                         </p>
-                        <div className="grid grid-cols-2 gap-8">
-                            <div className="p-6 bg-white/5 border border-white/10 rounded-xl">
+                        <motion.div
+                            variants={staggerContainer}
+                            initial="initial"
+                            whileInView="whileInView"
+                            viewport={{ once: true }}
+                            className="grid grid-cols-2 gap-8"
+                        >
+                            <motion.div variants={fadeIn} className="p-6 bg-white/5 border border-white/10 rounded-xl">
                                 <Grid className="text-primary mb-4" />
                                 <h4 className="text-white font-bold mb-2 uppercase tracking-wide">Zellige Architecture</h4>
                                 <p className="text-slate-500 text-sm">Authentic terracotta tiles from Fes.</p>
-                            </div>
-                            <div className="p-6 bg-white/5 border border-white/10 rounded-xl">
+                            </motion.div>
+                            <motion.div variants={fadeIn} className="p-6 bg-white/5 border border-white/10 rounded-xl">
                                 <Milestone className="text-primary mb-4" />
                                 <h4 className="text-white font-bold mb-2 uppercase tracking-wide">Stone & Marble</h4>
                                 <p className="text-slate-500 text-sm">Finest selections for floors and walls.</p>
-                            </div>
-                        </div>
+                            </motion.div>
+                        </motion.div>
                     </motion.div>
                     <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
@@ -150,10 +169,12 @@ export default function Services() {
                         className="lg:w-1/2 relative aspect-square rounded-full overflow-hidden border-[20px] border-white/5"
                     >
                         <Image
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQ9S0iLt9UyncneGb4t6mihseYh8BFDFobeXjvfzTivrkgwbh2exG2CKTbjh9B6Y_ZvEVnm8rjbwN0zs8-TKeo95k-cBPJXHfy-_Ju8e7eHv27U4GG5PXB-ThFqhH2xU5jZYTzPHcGB4YxwhOIIKW-uySc8oRVaaBro95HP9fWS87tB8jIUe2gScHe4sGgwJi_ASMY9lfs3S5DU06gY3jubWM1xZg7Mu_vRGHsfDke10xO3t5mr-5sVm7OWYoNmYJyvPMWgd2XVQEf"
+                            src="https://images.unsplash.com/photo-1618221195710-dd6b41fa33a8?auto=format&fit=crop&q=80&w=1000"
                             alt="Noble Materials"
                             fill
                             className="object-cover"
+                            unoptimized
+                            sizes="(max-width: 1024px) 100vw, 50vw"
                         />
                     </motion.div>
                 </div>
@@ -175,6 +196,6 @@ export default function Services() {
             </section>
 
             <Footer />
-        </main>
+        </main >
     );
 }

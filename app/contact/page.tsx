@@ -7,10 +7,15 @@ import Footer from "@/components/Footer";
 import { Mail, Phone, MapPin, Send, MessageCircle } from "lucide-react";
 
 const fadeIn = {
-    initial: { opacity: 0, y: 30 },
+    initial: { opacity: 0, y: 40 },
     whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true },
-    transition: { duration: 0.8, ease: "easeOut" }
+    viewport: { once: true, margin: "-100px" },
+    transition: { duration: 1, ease: [0.22, 1, 0.36, 1] }
+};
+
+const staggerContainer = {
+    initial: {},
+    whileInView: { transition: { staggerChildren: 0.1 } }
 };
 
 export default function Contact() {
@@ -33,71 +38,84 @@ export default function Contact() {
 
             <section className="pt-40 pb-20 px-6 md:px-20">
                 <div className="max-w-7xl mx-auto">
-                    <motion.div {...fadeIn} className="max-w-4xl mb-24">
-                        <span className="text-primary font-bold tracking-[0.5em] uppercase text-xs mb-6 block">Contact Us</span>
-                        <h1 className="text-5xl md:text-9xl font-black text-white uppercase tracking-tighter leading-none mb-12">
+                    <motion.div
+                        initial="initial"
+                        whileInView="whileInView"
+                        viewport={{ once: true }}
+                        className="max-w-4xl mb-24"
+                    >
+                        <motion.span variants={fadeIn} className="text-primary font-bold tracking-[0.5em] uppercase text-xs mb-6 block">Contact Us</motion.span>
+                        <motion.h1
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+                            className="text-5xl md:text-9xl font-black text-white uppercase tracking-tighter leading-none mb-12"
+                        >
                             Start Your <br /><span className="text-primary italic font-light">Dialogue</span>
-                        </h1>
+                        </motion.h1>
                     </motion.div>
 
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 mb-40">
                         {/* Contact Form */}
                         <motion.div
-                            initial={{ opacity: 0, x: -30 }}
+                            initial={{ opacity: 0, x: -50 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
+                            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
                             className="bg-white/5 p-10 md:p-20 rounded-[3rem] border border-white/10"
                         >
                             <h2 className="text-4xl text-white font-bold mb-10 uppercase tracking-tighter">Inquiry Form</h2>
                             <form onSubmit={handleSubmit} className="space-y-10">
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                                    <div className="space-y-4">
-                                        <label className="text-xs font-bold uppercase tracking-[0.2em] text-slate-500">FullName</label>
-                                        <input
-                                            type="text"
-                                            required
-                                            value={fullName}
-                                            onChange={(e) => setFullName(e.target.value)}
-                                            className="w-full bg-transparent border-b border-white/20 focus:border-primary outline-none py-4 text-white transition-colors"
-                                            placeholder="John Doe"
-                                        />
+                                <motion.div variants={staggerContainer} initial="initial" animate="whileInView" className="space-y-10">
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                                        <div className="space-y-4">
+                                            <label className="text-xs font-bold uppercase tracking-[0.2em] text-slate-500">FullName</label>
+                                            <input
+                                                type="text"
+                                                required
+                                                value={fullName}
+                                                onChange={(e) => setFullName(e.target.value)}
+                                                className="w-full bg-transparent border-b border-white/20 focus:border-primary outline-none py-4 text-white transition-colors"
+                                                placeholder="John Doe"
+                                            />
+                                        </div>
+                                        <div className="space-y-4">
+                                            <label className="text-xs font-bold uppercase tracking-[0.2em] text-slate-500">Email Address</label>
+                                            <input
+                                                type="email"
+                                                required
+                                                value={email}
+                                                onChange={(e) => setEmail(e.target.value)}
+                                                className="w-full bg-transparent border-b border-white/20 focus:border-primary outline-none py-4 text-white transition-colors"
+                                                placeholder="john@example.com"
+                                            />
+                                        </div>
                                     </div>
                                     <div className="space-y-4">
-                                        <label className="text-xs font-bold uppercase tracking-[0.2em] text-slate-500">Email Address</label>
-                                        <input
-                                            type="email"
+                                        <label className="text-xs font-bold uppercase tracking-[0.2em] text-slate-500">Project Type</label>
+                                        <select
+                                            value={projectType}
+                                            onChange={(e) => setProjectType(e.target.value)}
+                                            className="w-full bg-transparent border-b border-white/20 focus:border-primary outline-none py-4 text-slate-400 transition-colors"
+                                        >
+                                            <option className="bg-background-dark">Villa Construction</option>
+                                            <option className="bg-background-dark">Hotel Renovation</option>
+                                            <option className="bg-background-dark">Commercial Interior</option>
+                                            <option className="bg-background-dark">Bespoke Furniture</option>
+                                        </select>
+                                    </div>
+                                    <div className="space-y-4">
+                                        <label className="text-xs font-bold uppercase tracking-[0.2em] text-slate-500">Message</label>
+                                        <textarea
+                                            rows={4}
                                             required
-                                            value={email}
-                                            onChange={(e) => setEmail(e.target.value)}
-                                            className="w-full bg-transparent border-b border-white/20 focus:border-primary outline-none py-4 text-white transition-colors"
-                                            placeholder="john@example.com"
+                                            value={message}
+                                            onChange={(e) => setMessage(e.target.value)}
+                                            className="w-full bg-transparent border-b border-white/20 focus:border-primary outline-none py-4 text-white transition-colors resize-none"
+                                            placeholder="Describe your vision..."
                                         />
                                     </div>
-                                </div>
-                                <div className="space-y-4">
-                                    <label className="text-xs font-bold uppercase tracking-[0.2em] text-slate-500">Project Type</label>
-                                    <select
-                                        value={projectType}
-                                        onChange={(e) => setProjectType(e.target.value)}
-                                        className="w-full bg-transparent border-b border-white/20 focus:border-primary outline-none py-4 text-slate-400 transition-colors"
-                                    >
-                                        <option className="bg-background-dark">Villa Construction</option>
-                                        <option className="bg-background-dark">Hotel Renovation</option>
-                                        <option className="bg-background-dark">Commercial Interior</option>
-                                        <option className="bg-background-dark">Bespoke Furniture</option>
-                                    </select>
-                                </div>
-                                <div className="space-y-4">
-                                    <label className="text-xs font-bold uppercase tracking-[0.2em] text-slate-500">Message</label>
-                                    <textarea
-                                        rows={4}
-                                        required
-                                        value={message}
-                                        onChange={(e) => setMessage(e.target.value)}
-                                        className="w-full bg-transparent border-b border-white/20 focus:border-primary outline-none py-4 text-white transition-colors resize-none"
-                                        placeholder="Describe your vision..."
-                                    />
-                                </div>
+                                </motion.div>
                                 <button type="submit" className="flex items-center gap-4 bg-primary text-background-dark px-12 py-5 rounded-2xl font-black uppercase tracking-widest text-lg hover:scale-105 transition-transform">
                                     Send Inquiry <Send size={24} />
                                 </button>
@@ -106,9 +124,10 @@ export default function Contact() {
 
                         {/* Info and Map */}
                         <motion.div
-                            initial={{ opacity: 0, x: 30 }}
+                            initial={{ opacity: 0, x: 50 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
+                            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
                             className="flex flex-col gap-12"
                         >
                             <div className="space-y-12">

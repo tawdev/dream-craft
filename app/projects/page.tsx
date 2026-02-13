@@ -8,10 +8,15 @@ import Footer from "@/components/Footer";
 import { ArrowRight, ChevronRight, Maximize2 } from "lucide-react";
 
 const fadeIn = {
-    initial: { opacity: 0, y: 20 },
-    animate: { opacity: 1, y: 0 },
-    exit: { opacity: 0, y: -20 },
-    transition: { duration: 0.5 }
+    initial: { opacity: 0, y: 30 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, margin: "-100px" },
+    transition: { duration: 1, ease: [0.22, 1, 0.36, 1] }
+};
+
+const staggerContainer = {
+    initial: {},
+    whileInView: { transition: { staggerChildren: 0.1 } }
 };
 
 const projectsData = [
@@ -20,7 +25,7 @@ const projectsData = [
         title: "The Golden Riad",
         category: "Renovation",
         type: "villa",
-        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBaXYLNwLWuwG86nshVouPCnWTQes8iteAs54g2vrDLkFqfE5bCRWDD0a4xTDjRtm0VuiGSuhXqExU3gfg4ZqQxnsPFLaZnOrke6F04APLjVvsboW8VNPd8XN2GkN5vrkK22xqFT-YJ58t1X31crm4TigHhr3SQ0Qc1yX6uTld9PzuB3PNLR3Zw4ohkt9ojsvGrXSlOi0Nwes3ICwObJrK3SRvx15XRyDotAWZ5j80-on89fDHTBL6lpYwqoy6YFBwjxymseD8rJmWF",
+        image: "https://images.unsplash.com/photo-1574362848149-11496d93a7c7?auto=format&fit=crop&q=80&w=1000",
         location: "Medina, Marrakech"
     },
     {
@@ -28,7 +33,7 @@ const projectsData = [
         title: "Apex Plaza",
         category: "Construction",
         type: "commercial",
-        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuACit1tfPCw62NDeOsc-JuD5YHXHBJbIBiswVatiB8coL2MO9oOHMfrRKArVVmaQd_nqms8mqp5bD8Eq9EJhX-pZBAS3Jb82ZpFAK_rrpDTcMYIgVUmT5g1xaafaVkV9KFMUbRlx7auz_U3r9AjDoelJ_zsNC_0ArKIBvtPTnVFVeSFLUb77noCNafTmWyo0oBrr_YLMVECfycCFNiX9tMJf3P55OX3VxLIjht8Q5DEqv2GZsfHZJ34e_dlG8-L4SpsdXv45eiyFuY8",
+        image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1000",
         location: "Gueliz, Marrakech"
     },
     {
@@ -36,7 +41,7 @@ const projectsData = [
         title: "Marble Haven",
         category: "Interior Design",
         type: "apartment",
-        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAJdCpVTBz2g9eErfWGS4Qw9_nmuhXH07HTU992mSEl_hldTClMScsh5-83eS2EnM5nCQI-Mj8dSlY3dVXn6HO5hemA8IASwO17e-w0oUlj4tAX1A-Hri-GN66WfHafNS8PMqbnxr3Zp13sv-eRUn9hAGmW5BYBkMSD-P51rYE61-LoU_vZvX7NFy3D-hy765gCstojUDOcRI3G_02uH7zYly9mvob_D3n6_i4mkInBXLEb0ABiNv54CqJXoay1-6-i6e3Q6lKpn_IE",
+        image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&q=80&w=1000",
         location: "Hivernage, Marrakech"
     },
     {
@@ -44,7 +49,7 @@ const projectsData = [
         title: "Royal Atlas Hotel",
         category: "Construction",
         type: "hotel",
-        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBKlcbu9Z8xTGmOebkcCxrOhRsGy8lp0D7-5d7juH_k2eYO6AEV6RjvzBdmHg0_TvUL9Ut520w8R19ncD4Aj41Hqy8mHSvQZ97rLSMD7vNUSJjsCEhtWZOoLT8vxP0Ut84f3o-ZF7_G_Ung-45y3mi-xQxvIYQ1cfBTyzTphgqbkEELala5V5hFRPvEAjgpY-eHkjZ3PEGiaKx9qGweLoikR5CIY7upX04H6K_tnQEOlk6f53MrbEYgVf6agV6hI9WaLGpNqTyNfJaG",
+        image: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&q=80&w=1000",
         location: "Atlas Mountains"
     },
     {
@@ -52,7 +57,7 @@ const projectsData = [
         title: "Concrete Minimal",
         category: "Architecture",
         type: "villa",
-        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDsyn_LgAxb_OmADjArbcl43TFjJy9C0nZYZ3l8dwU_FuXovhNp6rEOKmgFgc07FU4Qf5OHEIghzmWUr518wj9_MA1BQXgK177BnlEWCBuc_4s6cPhMSax3QzdapyLkPyqgZ4zNuC4fxx14MsCyESIYgydYKFssoNzIa2L1CWWh6WaKfx4XBRL0jf0_W5BKBSW8Am8XtmeEsVdvq6V810d4vCLobf5PTWur2HQZWE5jTh8nhqTm5rZdkFOfe8Lx7iC8iKNSUHJN-cgf",
+        image: "https://images.unsplash.com/photo-1620626011761-9963d7b6976a?auto=format&fit=crop&q=80&w=1000",
         location: "Palmeraie, Marrakech"
     }
 ];
@@ -73,6 +78,7 @@ export default function Projects() {
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
                         animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
                         className="mb-20"
                     >
                         <span className="text-primary font-bold tracking-[0.5em] uppercase text-xs mb-4 block">Portfolio</span>
@@ -88,8 +94,8 @@ export default function Projects() {
                                 key={cat}
                                 onClick={() => setFilter(cat)}
                                 className={`px-8 py-3 rounded-full text-xs font-bold uppercase tracking-[0.2em] transition-all border ${filter === cat
-                                        ? "bg-primary text-background-dark border-primary"
-                                        : "bg-transparent text-slate-500 border-white/10 hover:border-primary/50"
+                                    ? "bg-primary text-background-dark border-primary"
+                                    : "bg-transparent text-slate-500 border-white/10 hover:border-primary/50"
                                     }`}
                             >
                                 {cat}
@@ -104,10 +110,14 @@ export default function Projects() {
                                 <motion.div
                                     key={project.id}
                                     layout
-                                    initial={{ opacity: 0, scale: 0.9 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    exit={{ opacity: 0, scale: 0.9 }}
-                                    transition={{ duration: 0.4 }}
+                                    initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                                    exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                                    transition={{
+                                        duration: 0.8,
+                                        ease: [0.22, 1, 0.36, 1],
+                                        layout: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
+                                    }}
                                     className="group relative h-[600px] rounded-3xl overflow-hidden cursor-pointer"
                                 >
                                     <Image
@@ -115,6 +125,8 @@ export default function Projects() {
                                         alt={project.title}
                                         fill
                                         className="object-cover transition-transform duration-1000 group-hover:scale-110"
+                                        unoptimized
+                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-500"></div>
                                     <div className="absolute inset-0 p-10 flex flex-col justify-end">
@@ -140,7 +152,7 @@ export default function Projects() {
                     {/* Before & After Section */}
                     <section className="py-40 bg-secondary rounded-[4rem] px-10 md:px-20 overflow-hidden relative">
                         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-20 items-center">
-                            <div className="lg:w-1/3">
+                            <motion.div {...fadeIn}>
                                 <span className="text-primary font-bold tracking-[0.4em] uppercase text-xs mb-6 block">Metamorphosis</span>
                                 <h2 className="text-4xl md:text-6xl font-black text-white uppercase mb-10 tracking-tighter">
                                     Before <br /><span className="text-primary italic font-light">& After</span>
@@ -159,24 +171,28 @@ export default function Projects() {
                                         <ChevronRight className="text-primary" /> Design Integration
                                     </div>
                                 </div>
-                            </div>
+                            </motion.div>
 
                             <div className="lg:w-2/3 grid grid-cols-2 gap-4 h-[500px] md:h-[700px] w-full">
                                 <div className="relative rounded-3xl overflow-hidden group">
                                     <Image
-                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQ9S0iLt9UyncneGb4t6mihseYh8BFDFobeXjvfzTivrkgwbh2exG2CKTbjh9B6Y_ZvEVnm8rjbwN0zs8-TKeo95k-cBPJXHfy-_Ju8e7eHv27U4GG5PXB-ThFqhH2xU5jZYTzPHcGB4YxwhOIIKW-uySc8oRVaaBro95HP9fWS87tB8jIUe2gScHe4sGgwJi_ASMY9lfs3S5DU06gY3jubWM1xZg7Mu_vRGHsfDke10xO3t5mr-5sVm7OWYoNmYJyvPMWgd2XVQEf"
+                                        src="https://images.unsplash.com/photo-1445510491599-c391e8046a68?auto=format&fit=crop&q=80&w=1000"
                                         alt="Before"
                                         fill
                                         className="object-cover grayscale"
+                                        unoptimized
+                                        sizes="(max-width: 1024px) 50vw, 33vw"
                                     />
                                     <div className="absolute top-8 left-8 bg-black/60 backdrop-blur-sm px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest border border-white/10">Before</div>
                                 </div>
                                 <div className="relative rounded-3xl overflow-hidden group">
                                     <Image
-                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaXYLNwLWuwG86nshVouPCnWTQes8iteAs54g2vrDLkFqfE5bCRWDD0a4xTDjRtm0VuiGSuhXqExU3gfg4ZqQxnsPFLaZnOrke6F04APLjVvsboW8VNPd8XN2GkN5vrkK22xqFT-YJ58t1X31crm4TigHhr3SQ0Qc1yX6uTld9PzuB3PNLR3Zw4ohkt9ojsvGrXSlOi0Nwes3ICwObJrK3SRvx15XRyDotAWZ5j80-on89fDHTBL6lpYwqoy6YFBwjxymseD8rJmWF"
+                                        src="https://images.unsplash.com/photo-1600585154340-be6199fbfd00?auto=format&fit=crop&q=80&w=1000"
                                         alt="After"
                                         fill
                                         className="object-cover"
+                                        unoptimized
+                                        sizes="(max-width: 1024px) 50vw, 33vw"
                                     />
                                     <div className="absolute top-8 left-8 bg-primary px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest text-background-dark">After</div>
                                 </div>

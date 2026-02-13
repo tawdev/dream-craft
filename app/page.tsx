@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
@@ -7,15 +8,28 @@ import Footer from "@/components/Footer";
 import { Hammer, Ruler, PenTool, Layout, Box, Lightbulb } from "lucide-react";
 
 const fadeIn = {
-    initial: { opacity: 0, y: 20 },
+    initial: { opacity: 0, y: 30 },
     whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true },
-    transition: { duration: 0.6, ease: "easeOut" }
+    viewport: { once: true, margin: "-100px" },
+    transition: { duration: 1, ease: [0.22, 1, 0.36, 1] }
 };
 
 const staggerContainer = {
     initial: {},
-    whileInView: { transition: { staggerChildren: 0.1 } }
+    whileInView: { transition: { staggerChildren: 0.15 } }
+};
+
+const heroTextVariant = {
+    hidden: { opacity: 0, y: 50 },
+    visible: (i: number) => ({
+        opacity: 1,
+        y: 0,
+        transition: {
+            delay: 0.5 + (i * 0.1),
+            duration: 1,
+            ease: [0.22, 1, 0.36, 1]
+        }
+    })
 };
 
 export default function Home() {
@@ -24,40 +38,64 @@ export default function Home() {
             <Navbar />
 
             {/* Hero Section */}
-            <section className="relative h-[90vh] w-full flex items-center overflow-hidden">
+            <section className="relative h-screen w-full flex items-center overflow-hidden">
                 <div className="absolute inset-0">
                     <div className="absolute inset-0 bg-black/60 z-10"></div>
-                    <Image
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaXYLNwLWuwG86nshVouPCnWTQes8iteAs54g2vrDLkFqfE5bCRWDD0a4xTDjRtm0VuiGSuhXqExU3gfg4ZqQxnsPFLaZnOrke6F04APLjVvsboW8VNPd8XN2GkN5vrkK22xqFT-YJ58t1X31crm4TigHhr3SQ0Qc1yX6uTld9PzuB3PNLR3Zw4ohkt9ojsvGrXSlOi0Nwes3ICwObJrK3SRvx15XRyDotAWZ5j80-on89fDHTBL6lpYwqoy6YFBwjxymseD8rJmWF"
-                        alt="Luxury Villa Marrakech"
-                        fill
-                        className="object-cover"
-                        priority
-                    />
+                    <motion.div
+                        initial={{ scale: 1.1, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        transition={{ duration: 2, ease: "easeOut" }}
+                        className="h-full w-full"
+                    >
+                        <Image
+                            src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&q=80&w=1600"
+                            alt="Luxury Villa Marrakech"
+                            fill
+                            className="object-cover"
+                            priority
+                            unoptimized
+                            sizes="100vw"
+                        />
+                    </motion.div>
                 </div>
 
                 <div className="relative z-20 px-6 md:px-20 max-w-5xl">
                     <motion.div
-                        initial={{ opacity: 0, x: -30 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.8, ease: "easeOut" }}
+                        initial="hidden"
+                        animate="visible"
                         className="bg-white/5 backdrop-blur-md p-8 md:p-16 border-l-8 border-primary rounded-r-2xl"
                     >
-                        <h1 className="text-white text-5xl md:text-8xl font-black leading-[1] tracking-tighter mb-8 uppercase">
+                        <motion.h1
+                            custom={0}
+                            variants={heroTextVariant}
+                            className="text-white text-5xl md:text-8xl font-black leading-[1] tracking-tighter mb-8 uppercase"
+                        >
                             Crafting Structures. <br />
                             <span className="text-primary italic">Designing Life.</span>
-                        </h1>
-                        <p className="text-white/80 text-lg md:text-2xl font-light leading-relaxed max-w-2xl mb-12">
+                        </motion.h1>
+                        <motion.p
+                            custom={1}
+                            variants={heroTextVariant}
+                            className="text-white/80 text-lg md:text-2xl font-light leading-relaxed max-w-2xl mb-12"
+                        >
                             High-end construction and interior design with an architectural edge. Based in Marrakech, serving absolute luxury.
-                        </p>
-                        <div className="flex flex-wrap gap-6">
-                            <button className="bg-primary text-background-dark px-10 py-5 rounded-lg font-bold text-lg hover:scale-105 transition-transform uppercase tracking-wider">
-                                View Projects
-                            </button>
-                            <button className="bg-white/10 text-white border border-white/20 px-10 py-5 rounded-lg font-bold text-lg backdrop-blur-md hover:bg-white/20 transition-all uppercase tracking-wider">
-                                Our Method
-                            </button>
-                        </div>
+                        </motion.p>
+                        <motion.div
+                            custom={2}
+                            variants={heroTextVariant}
+                            className="flex flex-wrap gap-6"
+                        >
+                            <Link href="/projects">
+                                <button className="bg-primary text-background-dark px-10 py-5 rounded-lg font-bold text-lg hover:scale-105 transition-transform uppercase tracking-wider">
+                                    View Projects
+                                </button>
+                            </Link>
+                            <Link href="/services">
+                                <button className="bg-white/10 text-white border border-white/20 px-10 py-5 rounded-lg font-bold text-lg backdrop-blur-md hover:bg-white/20 transition-all uppercase tracking-wider">
+                                    Our Method
+                                </button>
+                            </Link>
+                        </motion.div>
                     </motion.div>
                 </div>
 
@@ -145,10 +183,12 @@ export default function Home() {
                     <div className="grid grid-cols-1 md:grid-cols-12 gap-8 h-auto md:h-[1200px]">
                         <motion.div variants={fadeIn} className="md:col-span-8 relative group overflow-hidden rounded-2xl">
                             <Image
-                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQ9S0iLt9UyncneGb4t6mihseYh8BFDFobeXjvfzTivrkgwbh2exG2CKTbjh9B6Y_ZvEVnm8rjbwN0zs8-TKeo95k-cBPJXHfy-_Ju8e7eHv27U4GG5PXB-ThFqhH2xU5jZYTzPHcGB4YxwhOIIKW-uySc8oRVaaBro95HP9fWS87tB8jIUe2gScHe4sGgwJi_ASMY9lfs3S5DU06gY3jubWM1xZg7Mu_vRGHsfDke10xO3t5mr-5sVm7OWYoNmYJyvPMWgd2XVQEf"
+                                src="https://images.unsplash.com/photo-1600585154340-be6199fbfd00?auto=format&fit=crop&q=80&w=1000"
                                 alt="Oakwood Residence"
                                 fill
                                 className="object-cover transition-transform duration-1000 group-hover:scale-110"
+                                unoptimized
+                                sizes="(max-width: 768px) 100vw, 66vw"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-12 text-white">
                                 <p className="text-primary font-bold uppercase text-sm tracking-[0.4em] mb-4 text-shadow">Interior Curation</p>
@@ -158,10 +198,12 @@ export default function Home() {
 
                         <motion.div variants={fadeIn} className="md:col-span-4 relative group overflow-hidden rounded-2xl">
                             <Image
-                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuACit1tfPCw62NDeOsc-JuD5YHXHBJbIBiswVatiB8coL2MO9oOHMfrRKArVVmaQd_nqms8mqp5bD8Eq9EJhX-pZBAS3Jb82ZpFAK_rrpDTcMYIgVUmT5g1xaafaVkV9KFMUbRlx7auz_U3r9AjDoelJ_zsNC_0ArKIBvtPTnVFVeSFLUb77noCNafTmWyo0oBrr_YLMVECfycCFNiX9tMJf3P55OX3VxLIjht8Q5DEqv2GZsfHZJ34e_dlG8-L4SpsdXv45eiyFuY8"
+                                src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1000"
                                 alt="The Apex Plaza"
                                 fill
                                 className="object-cover transition-transform duration-1000 group-hover:scale-110"
+                                unoptimized
+                                sizes="(max-width: 768px) 100vw, 33vw"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-12 text-white">
                                 <p className="text-primary font-bold uppercase text-sm tracking-[0.4em] mb-4">Commercial</p>
@@ -171,10 +213,12 @@ export default function Home() {
 
                         <motion.div variants={fadeIn} className="md:col-span-4 relative group overflow-hidden rounded-2xl">
                             <Image
-                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYjs2In_lfFDsQQHNb6U-WMzapmWweiAvmrylsOsYT7TTyep1C1Vd3CszzUp7VegiqFhm4BR5ELH4075Ft2-Vw0pqfBl8a-5ntyxGWIC6h7ptapufhqfAKbqrJNrrUgAAsV1ju5udVAvQlie2KtmX5cLDZDNALOqxOW8s2n9v01xyut87iya1ZTKCxleVydKEfJF4rm23Hnqa5UBJp9rXNWxzKwPiNJbl_MFPlIiS6awCSKjFafLs-VzZrkcQfXf3N79aCGbvtelse"
+                                src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80&w=1000"
                                 alt="Hillside Villa"
                                 fill
                                 className="object-cover transition-transform duration-1000 group-hover:scale-110"
+                                unoptimized
+                                sizes="(max-width: 768px) 100vw, 33vw"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-12 text-white">
                                 <p className="text-primary font-bold uppercase text-sm tracking-[0.4em] mb-4">Construction</p>
@@ -184,10 +228,12 @@ export default function Home() {
 
                         <motion.div variants={fadeIn} className="md:col-span-8 relative group overflow-hidden rounded-2xl">
                             <Image
-                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWBuDfOSXeUh1C06MT2CDMHpbq3bZpRXL4Hrvo8etW_BmwfYqqQK323SKHLsAsefiEBe0vpQV9gNrLyRKOwB0sDjiu8QSZWLgdhZ6x34YaQxXf-Vr7P7MhQ70v5XThrOTlDBJJYaArRUMwlEZhIZefaTmtn3z-YFYIQ2xvwjQtz5eS_E__8ri15uKDmQlWPoNy72PLP_Re92x3anBdf4fKQ_kjHe3qmpX1uznoF7Wljj-FcK9Ur06AbrIanj4FxFmgCn_gSFtAALuV"
+                                src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?auto=format&fit=crop&q=80&w=1000"
                                 alt="Horizon Estate"
                                 fill
                                 className="object-cover transition-transform duration-1000 group-hover:scale-110"
+                                unoptimized
+                                sizes="(max-width: 768px) 100vw, 66vw"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-12 text-white">
                                 <p className="text-primary font-bold uppercase text-sm tracking-[0.4em] mb-4">Architecture</p>
@@ -211,39 +257,54 @@ export default function Home() {
                         initial="initial"
                         whileInView="whileInView"
                         viewport={{ once: true }}
-                        className="grid grid-cols-1 md:grid-cols-3 gap-20"
+                        className="grid grid-cols-1 md:grid-cols-3 gap-12"
                     >
                         {[
                             {
                                 num: "01",
-                                icon: <Lightbulb className="size-10 text-primary" />,
+                                icon: <Lightbulb className="size-8 text-primary" />,
                                 title: "Planning",
+                                image: "https://images.unsplash.com/photo-1503387762-592dea58ea2e?q=80&w=800&auto=format&fit=crop",
                                 desc: "We start with a deep dive into your lifestyle and site potential. This stage includes comprehensive surveys and conceptual sketches."
                             },
                             {
                                 num: "02",
-                                icon: <PenTool className="size-10 text-primary" />,
+                                icon: <PenTool className="size-8 text-primary" />,
                                 title: "Design",
+                                image: "https://images.unsplash.com/photo-1618221195710-dd6b41fa33a8?q=80&w=800&auto=format&fit=crop",
                                 desc: "Detailed 3D renders and material boards. We bridge the gap between technical blueprinting and sensory interior aesthetics."
                             },
                             {
                                 num: "03",
-                                icon: <Hammer className="size-10 text-primary" />,
+                                icon: <Hammer className="size-8 text-primary" />,
                                 title: "Execution",
+                                image: "https://images.unsplash.com/photo-1541888946425-d81bb19480c5?q=80&w=800&auto=format&fit=crop",
                                 desc: "Our construction team takes over with surgical precision. We manage every subcontractor and finish to ensure architectural fidelity."
                             }
                         ].map((step, idx) => (
-                            <motion.div key={idx} variants={fadeIn} className="flex flex-col gap-10">
-                                <div className="text-8xl font-black text-white/5 leading-none">{step.num}</div>
-                                <div className="flex items-center gap-6">
-                                    <div className="p-4 bg-white/5 rounded-xl border border-white/10 group-hover:border-primary transition-colors">
-                                        {step.icon}
-                                    </div>
-                                    <h3 className="text-3xl font-bold uppercase tracking-tight">{step.title}</h3>
+                            <motion.div key={idx} variants={fadeIn} className="group flex flex-col gap-8">
+                                <div className="relative h-64 overflow-hidden rounded-2xl border border-white/10 group-hover:border-primary transition-colors duration-500">
+                                    <Image
+                                        src={step.image}
+                                        alt={step.title}
+                                        fill
+                                        className="object-cover transition-transform duration-700 group-hover:scale-110"
+                                        sizes="(max-width: 768px) 33vw, 33vw"
+                                        unoptimized
+                                    />
+                                    <div className="absolute top-4 left-4 text-6xl font-black text-white/20 leading-none">{step.num}</div>
                                 </div>
-                                <p className="text-slate-400 leading-relaxed text-lg font-light italic">
-                                    {step.desc}
-                                </p>
+                                <div className="space-y-6">
+                                    <div className="flex items-center gap-6">
+                                        <div className="p-4 bg-white/5 rounded-xl border border-white/10 group-hover:bg-primary group-hover:text-background-dark transition-all duration-500">
+                                            {step.icon}
+                                        </div>
+                                        <h3 className="text-2xl font-bold uppercase tracking-tight text-white">{step.title}</h3>
+                                    </div>
+                                    <p className="text-slate-400 leading-relaxed text-lg font-light italic">
+                                        {step.desc}
+                                    </p>
+                                </div>
                             </motion.div>
                         ))}
                     </motion.div>

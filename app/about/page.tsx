@@ -7,10 +7,15 @@ import Footer from "@/components/Footer";
 import { Award, Users, ShieldCheck, Heart } from "lucide-react";
 
 const fadeIn = {
-    initial: { opacity: 0, y: 30 },
+    initial: { opacity: 0, y: 40 },
     whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true },
-    transition: { duration: 0.8, ease: "easeOut" }
+    viewport: { once: true, margin: "-100px" },
+    transition: { duration: 1, ease: [0.22, 1, 0.36, 1] }
+};
+
+const staggerContainer = {
+    initial: {},
+    whileInView: { transition: { staggerChildren: 0.15 } }
 };
 
 export default function About() {
@@ -21,56 +26,103 @@ export default function About() {
             {/* About Hero */}
             <section className="pt-40 pb-20 px-6 md:px-20 overflow-hidden">
                 <div className="max-w-7xl mx-auto">
-                    <motion.div {...fadeIn} className="max-w-4xl mb-32">
-                        <span className="text-primary font-bold tracking-[0.5em] uppercase text-xs mb-6 block">Our Legacy</span>
-                        <h1 className="text-5xl md:text-9xl font-black text-white uppercase tracking-tighter leading-[0.9] mb-12">
+                    <motion.div
+                        initial="initial"
+                        whileInView="whileInView"
+                        viewport={{ once: true }}
+                        className="max-w-4xl mb-32"
+                    >
+                        <motion.span variants={fadeIn} className="text-primary font-bold tracking-[0.5em] uppercase text-xs mb-6 block">Our Legacy</motion.span>
+                        <motion.h1
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+                            className="text-5xl md:text-9xl font-black text-white uppercase tracking-tighter leading-[0.9] mb-12"
+                        >
                             The Art of <br /><span className="text-primary italic font-light">Structure</span>
-                        </h1>
-                        <p className="text-slate-400 text-xl md:text-3xl font-light leading-relaxed italic border-l-4 border-white/10 pl-10">
+                        </motion.h1>
+                        <motion.p
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 1, delay: 0.5 }}
+                            className="text-slate-400 text-xl md:text-3xl font-light leading-relaxed italic border-l-4 border-white/10 pl-10"
+                        >
                             Dream Craft is more than a construction company. We are architects of environments, curators of spaces, and guardians of Moroccan heritage.
-                        </p>
+                        </motion.p>
                     </motion.div>
                 </div>
             </section>
 
             {/* Philosophy - Split Section */}
             <section className="relative h-screen min-h-[800px] w-full flex flex-col md:flex-row overflow-hidden border-y border-white/5">
-                <div className="group relative flex-1 overflow-hidden border-b md:border-b-0 md:border-r border-white/10">
+                <motion.div
+                    initial={{ opacity: 0, x: -100 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+                    viewport={{ once: true }}
+                    className="group relative flex-1 overflow-hidden border-b md:border-b-0 md:border-r border-white/10"
+                >
                     <Image
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQ9S0iLt9UyncneGb4t6mihseYh8BFDFobeXjvfzTivrkgwbh2exG2CKTbjh9B6Y_ZvEVnm8rjbwN0zs8-TKeo95k-cBPJXHfy-_Ju8e7eHv27U4GG5PXB-ThFqhH2xU5jZYTzPHcGB4YxwhOIIKW-uySc8oRVaaBro95HP9fWS87tB8jIUe2gScHe4sGgwJi_ASMY9lfs3S5DU06gY3jubWM1xZg7Mu_vRGHsfDke10xO3t5mr-5sVm7OWYoNmYJyvPMWgd2XVQEf"
+                        src="https://images.unsplash.com/photo-1541888946425-d81bb19480c5?auto=format&fit=crop&q=80&w=1000"
                         alt="The Structure"
                         fill
                         className="object-cover transition-transform duration-1000 group-hover:scale-105"
+                        unoptimized
+                        sizes="(max-width: 768px) 100vw, 50vw"
                     />
                     <div className="absolute inset-0 bg-black/60 group-hover:bg-black/40 transition-colors duration-500"></div>
                     <div className="relative h-full flex flex-col justify-center items-center px-10 text-center z-10">
-                        <h2 className="text-white text-4xl md:text-6xl font-black uppercase tracking-tighter mb-6">Technical <br /><span className="text-primary italic">Precision</span></h2>
+                        <motion.h2
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8, delay: 0.3 }}
+                            className="text-white text-4xl md:text-6xl font-black uppercase tracking-tighter mb-6"
+                        >Technical <br /><span className="text-primary italic">Precision</span></motion.h2>
                         <p className="text-white/80 max-w-sm font-light italic text-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                             Every foundation we lay is a commitment to structural longevity and engineering excellence.
                         </p>
                     </div>
-                </div>
-                <div className="group relative flex-1 overflow-hidden">
+                </motion.div>
+                <motion.div
+                    initial={{ opacity: 0, x: 100 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+                    viewport={{ once: true }}
+                    className="group relative flex-1 overflow-hidden"
+                >
                     <Image
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaXYLNwLWuwG86nshVouPCnWTQes8iteAs54g2vrDLkFqfE5bCRWDD0a4xTDjRtm0VuiGSuhXqExU3gfg4ZqQxnsPFLaZnOrke6F04APLjVvsboW8VNPd8XN2GkN5vrkK22xqFT-YJ58t1X31crm4TigHhr3SQ0Qc1yX6uTld9PzuB3PNLR3Zw4ohkt9ojsvGrXSlOi0Nwes3ICwObJrK3SRvx15XRyDotAWZ5j80-on89fDHTBL6lpYwqoy6YFBwjxymseD8rJmWF"
+                        src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=1000"
                         alt="The Aesthetic"
                         fill
                         className="object-cover transition-transform duration-1000 group-hover:scale-105"
+                        unoptimized
+                        sizes="(max-width: 768px) 100vw, 50vw"
                     />
                     <div className="absolute inset-0 bg-black/60 group-hover:bg-black/40 transition-colors duration-500"></div>
                     <div className="relative h-full flex flex-col justify-center items-center px-10 text-center z-10">
-                        <h2 className="text-white text-4xl md:text-6xl font-black uppercase tracking-tighter mb-6">Aesthetic <br /><span className="text-primary italic">Soul</span></h2>
+                        <motion.h2
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8, delay: 0.3 }}
+                            className="text-white text-4xl md:text-6xl font-black uppercase tracking-tighter mb-6"
+                        >Aesthetic <br /><span className="text-primary italic">Soul</span></motion.h2>
                         <p className="text-white/80 max-w-sm font-light italic text-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                             We weave the threads of architecture and design to create spaces that evoke emotion and inspire.
                         </p>
                     </div>
-                </div>
+                </motion.div>
             </section>
 
             {/* Values Section */}
             <section className="py-32 px-6 md:px-20">
                 <div className="max-w-7xl mx-auto">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                    <motion.div
+                        variants={staggerContainer}
+                        initial="initial"
+                        whileInView="whileInView"
+                        viewport={{ once: true, margin: "-100px" }}
+                        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12"
+                    >
                         {[
                             { icon: <Award />, title: "Excellence", desc: "Setting the gold standard in Moroccan construction." },
                             { icon: <Users />, title: "Collaboration", desc: "Working in synergy with global architects and local masters." },
@@ -79,8 +131,7 @@ export default function About() {
                         ].map((value, idx) => (
                             <motion.div
                                 key={idx}
-                                {...fadeIn}
-                                transition={{ delay: idx * 0.1 }}
+                                variants={fadeIn}
                                 className="p-10 bg-white/5 border border-white/10 rounded-2xl text-center flex flex-col items-center"
                             >
                                 <div className="text-primary mb-8 scale-150">{value.icon}</div>
@@ -88,7 +139,7 @@ export default function About() {
                                 <p className="text-slate-500 text-sm font-light italic">{value.desc}</p>
                             </motion.div>
                         ))}
-                    </div>
+                    </motion.div>
                 </div>
             </section>
 

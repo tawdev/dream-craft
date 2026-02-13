@@ -1,121 +1,77 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
-import { Mail, MapPin, Share2, Globe } from "lucide-react";
+import { Mail, MapPin, Facebook, Instagram, Youtube } from "lucide-react";
+
+const TikTokIcon = ({ size = 24 }: { size?: number }) => (
+    <svg
+        width={size}
+        height={size}
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+    >
+        <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+    </svg>
+);
 
 const Footer = () => {
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
-    const [projectType, setProjectType] = useState("Residential Construction");
-    const [message, setMessage] = useState("");
-
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        const whatsappNumber = "212621122318";
-        const text = `*New Lead from Dream Craft Footer*\n\n*Name:* ${name}\n*Email:* ${email}\n*Project:* ${projectType}\n*Message:* ${message}`;
-        const encodedText = encodeURIComponent(text);
-        window.open(`https://wa.me/${whatsappNumber}?text=${encodedText}`, "_blank");
-    };
-
     return (
-        <footer className="bg-secondary text-white py-24 px-6 md:px-20 border-t border-white/5">
-            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-20">
-                <div>
-                    <h2 className="text-4xl font-black mb-8 leading-tight">
-                        Start Your <br />
-                        <span className="text-primary">Transformation.</span>
+        <footer className="bg-secondary text-white py-12 px-6 md:px-20 border-t border-white/5">
+            <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-10">
+                <div className="flex flex-col gap-5 md:max-w-sm">
+                    <h2 className="text-3xl md:text-4xl font-black leading-tight uppercase tracking-tighter">
+                        Crafting <span className="text-primary italic">Excellence.</span>
                     </h2>
-                    <p className="text-slate-400 text-lg mb-12 max-w-md">
-                        Ready to build or redesign? Our experts are here to consult on your next high-end project in Marrakech.
+                    <p className="text-slate-400 text-xs leading-relaxed max-w-xs">
+                        High-end construction and interior design with an architectural focus based in Marrakech.
                     </p>
-                    <div className="space-y-6">
-                        <div className="flex items-center gap-4">
-                            <MapPin className="text-primary" size={24} />
-                            <div>
-                                <p className="text-sm font-bold uppercase tracking-wider">Studio Headquarters</p>
-                                <p className="text-sm text-slate-400">Marrakech Design District, Morocco</p>
-                            </div>
-                        </div>
-                        <div className="flex items-center gap-4">
-                            <Mail className="text-primary" size={24} />
-                            <div>
-                                <p className="text-sm font-bold uppercase tracking-wider">Direct Inquiry</p>
-                                <p className="text-sm text-slate-400">hello@dreamcraft.ma</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="mt-20 flex gap-6">
-                        <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors">
-                            <Share2 size={16} />
+                    <div className="flex flex-wrap gap-3">
+                        <a href="#" className="w-9 h-9 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary hover:text-background-dark transition-all duration-500 border border-white/10">
+                            <Facebook size={16} />
                         </a>
-                        <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors">
-                            <Globe size={16} />
+                        <a href="#" className="w-9 h-9 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary hover:text-background-dark transition-all duration-500 border border-white/10">
+                            <Instagram size={16} />
+                        </a>
+                        <a href="#" className="w-9 h-9 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary hover:text-background-dark transition-all duration-500 border border-white/10">
+                            <TikTokIcon size={16} />
+                        </a>
+                        <a href="#" className="w-9 h-9 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary hover:text-background-dark transition-all duration-500 border border-white/10">
+                            <Youtube size={16} />
                         </a>
                     </div>
                 </div>
 
-                <div className="bg-white/5 p-8 md:p-12 rounded-2xl border border-white/10">
-                    <form onSubmit={handleSubmit} className="space-y-6">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div className="space-y-2">
-                                <label className="text-xs font-bold uppercase tracking-wider text-slate-400">Name</label>
-                                <input
-                                    type="text"
-                                    required
-                                    value={name}
-                                    onChange={(e) => setName(e.target.value)}
-                                    placeholder="Your Name"
-                                    className="w-full bg-transparent border-b border-slate-700 focus:border-primary focus:ring-0 py-2 outline-none transition-colors"
-                                />
-                            </div>
-                            <div className="space-y-2">
-                                <label className="text-xs font-bold uppercase tracking-wider text-slate-400">Email</label>
-                                <input
-                                    type="email"
-                                    required
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                    placeholder="john@example.com"
-                                    className="w-full bg-transparent border-b border-slate-700 focus:border-primary focus:ring-0 py-2 outline-none transition-colors"
-                                />
-                            </div>
+                <div className="flex flex-col sm:flex-row gap-6 w-full md:w-auto">
+                    <div className="flex items-center gap-4 p-5 bg-white/5 rounded-xl border border-white/10 hover:border-primary transition-colors flex-1 min-w-[200px]">
+                        <div className="p-2.5 bg-primary/10 rounded-lg text-primary">
+                            <MapPin size={20} />
                         </div>
-                        <div className="space-y-2">
-                            <label className="text-xs font-bold uppercase tracking-wider text-slate-400">Project Type</label>
-                            <select
-                                value={projectType}
-                                onChange={(e) => setProjectType(e.target.value)}
-                                className="w-full bg-transparent border-b border-slate-700 focus:border-primary focus:ring-0 py-2 outline-none text-slate-400"
-                            >
-                                <option className="bg-secondary">Residential Construction</option>
-                                <option className="bg-secondary">Interior Design</option>
-                                <option className="bg-secondary">Commercial Build</option>
-                                <option className="bg-secondary">Renovation</option>
-                            </select>
+                        <div>
+                            <h4 className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 mb-0.5">Studio</h4>
+                            <p className="text-xs text-white">Marrakech, Morocco</p>
                         </div>
-                        <div className="space-y-2">
-                            <label className="text-xs font-bold uppercase tracking-wider text-slate-400">Message</label>
-                            <textarea
-                                rows={4}
-                                required
-                                value={message}
-                                onChange={(e) => setMessage(e.target.value)}
-                                placeholder="Briefly describe your vision..."
-                                className="w-full bg-transparent border-b border-slate-700 focus:border-primary focus:ring-0 py-2 outline-none transition-colors resize-none"
-                            ></textarea>
+                    </div>
+                    <div className="flex items-center gap-4 p-5 bg-white/5 rounded-xl border border-white/10 hover:border-primary transition-colors flex-1 min-w-[200px]">
+                        <div className="p-2.5 bg-primary/10 rounded-lg text-primary">
+                            <Mail size={20} />
                         </div>
-                        <button type="submit" className="w-full bg-primary text-background-dark py-4 rounded-lg font-bold uppercase tracking-widest text-sm hover:bg-primary/90 transition-all mt-6">
-                            Send Inquiry
-                        </button>
-                    </form>
+                        <div>
+                            <h4 className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 mb-0.5">Enquiries</h4>
+                            <p className="text-xs text-white">hello@dreamcraft.ma</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div className="max-w-7xl mx-auto mt-24 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-slate-500 text-xs uppercase tracking-widest">
-                <p>© 2026 Dream Craft. All Rights Reserved.</p>
-                <div className="flex gap-8">
+
+            <div className="max-w-7xl mx-auto mt-12 pt-6 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-slate-500 text-[10px] uppercase tracking-widest font-bold">
+                <p>© 2026 C-digital. All Rights Reserved.</p>
+                <div className="flex gap-6">
                     <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
-                    <Link href="#" className="hover:text-white transition-colors">Terms of Service</Link>
+                    <Link href="#" className="hover:text-white transition-colors">Terms</Link>
                     <Link href="#" className="hover:text-white transition-colors">Cookies</Link>
                 </div>
             </div>
