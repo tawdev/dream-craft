@@ -160,15 +160,18 @@ export default function Contact() {
                                 </div>
                             </div>
 
-                            {/* Map Placeholder */}
+                            {/* Live Google Map */}
                             <div className="flex-1 w-full bg-white/5 rounded-[3rem] border border-white/10 overflow-hidden relative grayscale hover:grayscale-0 transition-all duration-1000">
-                                <div className="absolute inset-0 flex items-center justify-center">
-                                    <div className="text-center">
-                                        <MapPin size={48} className="text-primary mx-auto mb-4" />
-                                        <p className="text-slate-500 font-bold uppercase tracking-widest text-xs">Architectural HQ Marrakech</p>
-                                    </div>
-                                </div>
-                                <div className="w-full h-full bg-secondary opacity-30"></div>
+                                <iframe
+                                    src="https://www.google.com/maps?q=lot+iguider+n48+avenue+allal+el+fassi,+Marrakech&output=embed"
+                                    width="100%"
+                                    height="100%"
+                                    style={{ border: 0 }}
+                                    allowFullScreen
+                                    loading="lazy"
+                                    referrerPolicy="no-referrer-when-downgrade"
+                                    className="absolute inset-0 w-full h-full opacity-60 hover:opacity-100 transition-opacity duration-1000"
+                                ></iframe>
                             </div>
                         </motion.div>
                     </div>
