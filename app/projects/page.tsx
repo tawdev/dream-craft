@@ -57,7 +57,7 @@ const projectsData = [
         title: "Concrete Minimal",
         category: "Architecture",
         type: "villa",
-        image: "/images/unsplash-1620626011761-9963d7b6976a.jpg",
+        image: "/images/unsplash-1503387762-592dea58ea2e.jpg",
         location: "Palmeraie, Marrakech"
     }
 ];
@@ -187,7 +187,7 @@ export default function Projects() {
                                 </div>
                                 <div className="relative rounded-3xl overflow-hidden group">
                                     <Image
-                                        src="/images/unsplash-1600585154340-be6199fbfd00.jpg"
+                                        src="/images/spacejoy-h2_3dL9yLpU-unsplash.jpg"
                                         alt="After"
                                         fill
                                         className="object-cover"
