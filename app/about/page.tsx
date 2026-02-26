@@ -63,7 +63,7 @@ export default function About() {
                     className="group relative flex-1 overflow-hidden border-b md:border-b-0 md:border-r border-white/10"
                 >
                     <Image
-                        src="images/ricardo-gomez-angel-jYNvXKTUYvs-unsplash.jpg"
+                        src="/images/ricardo-gomez-angel-jYNvXKTUYvs-unsplash.jpg"
                         alt="The Structure"
                         fill
                         className="object-cover transition-transform duration-1000 group-hover:scale-105"

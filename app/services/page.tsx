@@ -67,7 +67,7 @@ export default function Services() {
                 <div className="absolute inset-0">
                     <div className="absolute inset-0 bg-black/70 z-10"></div>
                     <Image
-                        src="images/service.jpg"
+                        src="/images/service.jpg"
                         alt="Construction Services"
                         fill
                         className="object-cover"
