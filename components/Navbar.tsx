@@ -55,12 +55,6 @@ const Navbar = () => {
                             </Link>
                         ))}
                     </div>
-                    <Link
-                        href="/contact"
-                        className="bg-primary text-background-dark px-6 py-2 rounded-lg text-sm font-bold tracking-wide hover:bg-primary/90 transition-all"
-                    >
-                        Get a Quote
-                    </Link>
                 </div>
 
                 {/* Mobile Toggle */}
@@ -87,13 +81,6 @@ const Navbar = () => {
                             {link.name}
                         </Link>
                     ))}
-                    <Link
-                        href="/contact"
-                        className="bg-primary text-background-dark px-6 py-3 rounded-lg text-center font-bold"
-                        onClick={() => setIsOpen(false)}
-                    >
-                        Get a Quote
-                    </Link>
                 </motion.div>
             )}
         </nav>
