@@ -23,6 +23,13 @@ const Footer = () => {
         <footer className="bg-secondary text-white py-12 px-6 md:px-20 border-t border-white/5">
             <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-10">
                 <div className="flex flex-col gap-5 md:max-w-sm">
+                    <div className="h-20 w-auto self-start">
+                        <img
+                            src="/images/logo.png"
+                            alt="Dream Craft Logo"
+                            className="h-full w-auto object-contain brightness-0 invert"
+                        />
+                    </div>
                     <h2 className="text-3xl md:text-4xl font-black leading-tight uppercase tracking-tighter">
                         Crafting <span className="text-primary italic">Excellence.</span>
                     </h2>
@@ -61,7 +68,7 @@ const Footer = () => {
                         </div>
                         <div>
                             <h4 className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 mb-0.5">Enquiries</h4>
-                            <p className="text-xs text-white">hello@dreamcraft.ma</p>
+                            <p className="text-xs text-white">contact@dreamcraft.ma</p>
                         </div>
                     </div>
                 </div>

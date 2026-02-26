@@ -67,7 +67,7 @@ export default function Services() {
                 <div className="absolute inset-0">
                     <div className="absolute inset-0 bg-black/70 z-10"></div>
                     <Image
-                        src="https://images.unsplash.com/photo-1541888946425-d81bb19480c5?auto=format&fit=crop&q=80&w=1600"
+                        src="images/service.jpg"
                         alt="Construction Services"
                         fill
                         className="object-cover"
@@ -169,7 +169,7 @@ export default function Services() {
                         className="lg:w-1/2 relative aspect-square rounded-full overflow-hidden border-[20px] border-white/5"
                     >
                         <Image
-                            src="https://images.unsplash.com/photo-1618221195710-dd6b41fa33a8?auto=format&fit=crop&q=80&w=1000"
+                            src="/images/unsplash-1618221195710-dd6b41fa33a8.jpg"
                             alt="Noble Materials"
                             fill
                             className="object-cover"

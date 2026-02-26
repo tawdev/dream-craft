@@ -1,0 +1,123 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import { FaWhatsapp, FaTimes } from "react-icons/fa";
+import { motion, AnimatePresence } from "framer-motion";
+import React from "react";
+
+export default function WhatsappContact() {
+    const [isOpen, setIsOpen] = useState(false);
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
+    const toggleChat = () => setIsOpen(!isOpen);
+
+    // Dream Craft Brand Color
+    const themeColor = "#d4af37"; // Elegant Gold
+
+    const t = {
+        title: "Support Dream Craft",
+        status: "Online",
+        description: "Hello! Design your dream project with us. How can we help you today?",
+        role: "Client Relations",
+        tooltip_title: "Need assistance?",
+        tooltip_sub: "Chat with us on WhatsApp"
+    };
+
+    if (!mounted) return null;
+
+    return (
+        <>
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.div
+                        className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        onClick={toggleChat}
+                    />
+                )}
+            </AnimatePresence>
+
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.div
+                        className="fixed bottom-24 md:bottom-28 right-4 md:right-8 z-50 w-80 rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-white font-sans"
+                        initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 50, scale: 0.9 }}
+                    >
+                        <div className="p-6 text-white" style={{ background: `linear-gradient(135deg, ${themeColor} 0%, #b8962c 100%)` }}>
+                            <div className="flex items-center gap-4">
+                                <div className="bg-white/20 p-2 rounded-full backdrop-blur-md">
+                                    <FaWhatsapp size={24} />
+                                </div>
+                                <div>
+                                    <h3 className="text-lg font-bold">{t.title}</h3>
+                                    <div className="flex items-center gap-2">
+                                        <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+                                        <span className="text-xs text-white/80">{t.status}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="p-6 space-y-4">
+                            <p className="text-slate-600 text-sm leading-relaxed">{t.description}</p>
+                            <a
+                                href={`https://wa.me/+212661879373?text=${encodeURIComponent("Bonjour, je suis intéressé(e) par vos services de construction et je souhaiterais avoir plus d’informations concernant un projet. Merci.")}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center justify-between bg-gray-50 hover:bg-gray-100 p-4 rounded-xl border border-gray-100 transition-all group"
+                            >
+                                <div className="flex items-center gap-4">
+                                    <div className="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg" style={{ backgroundColor: themeColor }}>
+                                        DC
+                                    </div>
+                                    <div>
+                                        <span className="block font-bold text-gray-900">Dream Craft</span>
+                                        <span className="text-xs text-slate-400">{t.role}</span>
+                                    </div>
+                                </div>
+                                <FaWhatsapp size={24} style={{ color: themeColor }} className="group-hover:scale-110 transition-transform" />
+                            </a>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+
+            <div className="fixed bottom-8 right-8 z-50">
+                <motion.button
+                    onClick={toggleChat}
+                    className="relative w-14 h-14 rounded-full shadow-2xl flex items-center justify-center text-white overflow-hidden cursor-pointer border border-white/10"
+                    style={{ background: isOpen ? '#ef4444' : `linear-gradient(135deg, ${themeColor} 0%, #b8962c 100%)` }}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    animate={{ rotate: isOpen ? 0 : [0, -5, 5, -5, 0] }}
+                    transition={{ rotate: { duration: 2, repeat: isOpen ? 0 : Infinity, repeatDelay: 3 } }}
+                >
+                    {isOpen ? <FaTimes size={28} /> : <FaWhatsapp size={28} />}
+                </motion.button>
+            </div>
+
+            <AnimatePresence>
+                {!isOpen && (
+                    <motion.div
+                        className="fixed bottom-10 right-20 md:right-24 z-40 bg-white/90 backdrop-blur-md py-2 px-4 rounded-xl shadow-xl border border-gray-100 hidden md:block font-sans"
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: 20 }}
+                        transition={{ delay: 0.5 }}
+                    >
+                        <div className="text-gray-900 font-bold text-sm">{t.tooltip_title}</div>
+                        <div className="text-slate-500 text-xs">{t.tooltip_sub}</div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </>
+    );
+}

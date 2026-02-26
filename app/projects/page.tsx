@@ -25,7 +25,7 @@ const projectsData = [
         title: "The Golden Riad",
         category: "Renovation",
         type: "villa",
-        image: "https://images.unsplash.com/photo-1574362848149-11496d93a7c7?auto=format&fit=crop&q=80&w=1000",
+        image: "/images/unsplash-1574362848149-11496d93a7c7.jpg",
         location: "Medina, Marrakech"
     },
     {
@@ -33,7 +33,7 @@ const projectsData = [
         title: "Apex Plaza",
         category: "Construction",
         type: "commercial",
-        image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1000",
+        image: "/images/unsplash-1486406146926-c627a92ad1ab.jpg",
         location: "Gueliz, Marrakech"
     },
     {
@@ -41,7 +41,7 @@ const projectsData = [
         title: "Marble Haven",
         category: "Interior Design",
         type: "apartment",
-        image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&q=80&w=1000",
+        image: "/images/unsplash-1600566753190-17f0baa2a6c3.jpg",
         location: "Hivernage, Marrakech"
     },
     {
@@ -49,7 +49,7 @@ const projectsData = [
         title: "Royal Atlas Hotel",
         category: "Construction",
         type: "hotel",
-        image: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&q=80&w=1000",
+        image: "/images/unsplash-1542314831-068cd1dbfeeb.jpg",
         location: "Atlas Mountains"
     },
     {
@@ -176,7 +176,7 @@ export default function Projects() {
                             <div className="lg:w-2/3 grid grid-cols-2 gap-4 h-[500px] md:h-[700px] w-full">
                                 <div className="relative rounded-3xl overflow-hidden group">
                                     <Image
-                                        src="https://images.unsplash.com/photo-1445510491599-c391e8046a68?auto=format&fit=crop&q=80&w=1000"
+                                        src="/images/unsplash-1445510491599-c391e8046a68.jpg"
                                         alt="Before"
                                         fill
                                         className="object-cover grayscale"

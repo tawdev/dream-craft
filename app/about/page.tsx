@@ -63,7 +63,7 @@ export default function About() {
                     className="group relative flex-1 overflow-hidden border-b md:border-b-0 md:border-r border-white/10"
                 >
                     <Image
-                        src="https://images.unsplash.com/photo-1541888946425-d81bb19480c5?auto=format&fit=crop&q=80&w=1000"
+                        src="images/ricardo-gomez-angel-jYNvXKTUYvs-unsplash.jpg"
                         alt="The Structure"
                         fill
                         className="object-cover transition-transform duration-1000 group-hover:scale-105"
@@ -91,7 +91,7 @@ export default function About() {
                     className="group relative flex-1 overflow-hidden"
                 >
                     <Image
-                        src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=1000"
+                        src="/images/unsplash-1600210492486-724fe5c67fb0.jpg"
                         alt="The Aesthetic"
                         fill
                         className="object-cover transition-transform duration-1000 group-hover:scale-105"

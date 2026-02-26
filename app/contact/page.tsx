@@ -26,8 +26,8 @@ export default function Contact() {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        const whatsappNumber = "212621122318";
-        const text = `*New Inquiry from Dream Craft Website*\n\n*Name:* ${fullName}\n*Email:* ${email}\n*Project:* ${projectType}\n*Message:* ${message}`;
+        const whatsappNumber = "212661879373";
+        const text = `*New Inquiry | Dream Craft*\n\n*Client:* ${fullName}\n*Email:* ${email}\n*Project:* ${projectType}\n\n*Message:*\n${message}`;
         const encodedText = encodeURIComponent(text);
         window.open(`https://wa.me/${whatsappNumber}?text=${encodedText}`, "_blank");
     };
@@ -136,8 +136,8 @@ export default function Contact() {
                                         <MapPin size={32} />
                                     </div>
                                     <div>
-                                        <h4 className="text-xl font-bold text-white uppercase tracking-widest mb-2">Marrakech Studio</h4>
-                                        <p className="text-slate-400 italic font-light">145 Boulevard de la Menara, Gueliz, Marrakech</p>
+                                        <h4 className="text-xl font-bold text-white uppercase tracking-widest mb-2">Marrakech</h4>
+                                        <p className="text-slate-400 italic font-light">lot iguider n48 avenue allal el fassi, Marrakech</p>
                                     </div>
                                 </div>
                                 <div className="flex gap-8 group">
@@ -146,7 +146,7 @@ export default function Contact() {
                                     </div>
                                     <div>
                                         <h4 className="text-xl font-bold text-white uppercase tracking-widest mb-2">Direct Line</h4>
-                                        <p className="text-slate-400 italic font-light">+212 524 12 34 56</p>
+                                        <p className="text-slate-400 italic font-light">+212 661 879373</p>
                                     </div>
                                 </div>
                                 <div className="flex gap-8 group">
@@ -155,7 +155,7 @@ export default function Contact() {
                                     </div>
                                     <div>
                                         <h4 className="text-xl font-bold text-white uppercase tracking-widest mb-2">Email</h4>
-                                        <p className="text-slate-400 italic font-light">hello@dreamcraft.ma</p>
+                                        <p className="text-slate-400 italic font-light">contact@dreamcraft.ma</p>
                                     </div>
                                 </div>
                             </div>

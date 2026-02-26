@@ -45,10 +45,10 @@ export default function Home() {
                         initial={{ scale: 1.1, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
                         transition={{ duration: 2, ease: "easeOut" }}
-                        className="h-full w-full"
+                        className="relative h-full w-full"
                     >
                         <Image
-                            src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&q=80&w=1600"
+                            src="/images/unsplash-1613490493576-7fde63acd811.jpg"
                             alt="Luxury Villa Marrakech"
                             fill
                             className="object-cover"
@@ -183,7 +183,7 @@ export default function Home() {
                     <div className="grid grid-cols-1 md:grid-cols-12 gap-8 h-auto md:h-[1200px]">
                         <motion.div variants={fadeIn} className="md:col-span-8 relative group overflow-hidden rounded-2xl">
                             <Image
-                                src="https://images.unsplash.com/photo-1600585154340-be6199fbfd00?auto=format&fit=crop&q=80&w=1000"
+                                src="/images/spacejoy-h2_3dL9yLpU-unsplash.jpg"
                                 alt="Oakwood Residence"
                                 fill
                                 className="object-cover transition-transform duration-1000 group-hover:scale-110"
@@ -198,7 +198,7 @@ export default function Home() {
 
                         <motion.div variants={fadeIn} className="md:col-span-4 relative group overflow-hidden rounded-2xl">
                             <Image
-                                src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1000"
+                                src="/images/unsplash-1486406146926-c627a92ad1ab.jpg"
                                 alt="The Apex Plaza"
                                 fill
                                 className="object-cover transition-transform duration-1000 group-hover:scale-110"
@@ -213,7 +213,7 @@ export default function Home() {
 
                         <motion.div variants={fadeIn} className="md:col-span-4 relative group overflow-hidden rounded-2xl">
                             <Image
-                                src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80&w=1000"
+                                src="/images/unsplash-1600607687920-4e2a09cf159d.jpg"
                                 alt="Hillside Villa"
                                 fill
                                 className="object-cover transition-transform duration-1000 group-hover:scale-110"
@@ -228,7 +228,7 @@ export default function Home() {
 
                         <motion.div variants={fadeIn} className="md:col-span-8 relative group overflow-hidden rounded-2xl">
                             <Image
-                                src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?auto=format&fit=crop&q=80&w=1000"
+                                src="/images/unsplash-1600047509807-ba8f99d2cdde.jpg"
                                 alt="Horizon Estate"
                                 fill
                                 className="object-cover transition-transform duration-1000 group-hover:scale-110"
@@ -264,21 +264,21 @@ export default function Home() {
                                 num: "01",
                                 icon: <Lightbulb className="size-8 text-primary" />,
                                 title: "Planning",
-                                image: "https://images.unsplash.com/photo-1503387762-592dea58ea2e?q=80&w=800&auto=format&fit=crop",
+                                image: "/images/planing.jpg",
                                 desc: "We start with a deep dive into your lifestyle and site potential. This stage includes comprehensive surveys and conceptual sketches."
                             },
                             {
                                 num: "02",
                                 icon: <PenTool className="size-8 text-primary" />,
                                 title: "Design",
-                                image: "https://images.unsplash.com/photo-1618221195710-dd6b41fa33a8?q=80&w=800&auto=format&fit=crop",
+                                image: "/images/design.jpg",
                                 desc: "Detailed 3D renders and material boards. We bridge the gap between technical blueprinting and sensory interior aesthetics."
                             },
                             {
                                 num: "03",
                                 icon: <Hammer className="size-8 text-primary" />,
                                 title: "Execution",
-                                image: "https://images.unsplash.com/photo-1541888946425-d81bb19480c5?q=80&w=800&auto=format&fit=crop",
+                                image: "/images/executing.jpg",
                                 desc: "Our construction team takes over with surgical precision. We manage every subcontractor and finish to ensure architectural fidelity."
                             }
                         ].map((step, idx) => (
